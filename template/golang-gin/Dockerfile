@@ -10,7 +10,7 @@ ENV CGO_ENABLED=0
 
 RUN mkdir -p /go/src/handler
 WORKDIR /go/src/handler
-COPY . .
+COPY .. .
 
 # Add user overrides to the root go.mod, which is the only place "replace" can be used
 RUN cat function/GO_REPLACE.txt >> ./go.mod || exit 0
