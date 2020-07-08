@@ -1,0 +1,1 @@
+A simple gin template for open-faas
