@@ -31,7 +31,7 @@ RUN go build --ldflags "-s -w" -a -installsuffix cgo -o handler .
 
 FROM alpine:3.11
 # Add non root user and certs
-RUN apk --no-cache add ca-certificates \
+RUN apk --no-cache add tzdata ca-certificates \
     && addgroup -S app && adduser -S -g app app \
     && mkdir -p /home/app \
     && chown app /home/app
