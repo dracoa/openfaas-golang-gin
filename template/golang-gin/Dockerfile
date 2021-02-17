@@ -37,7 +37,6 @@ RUN CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.13
 # Add non root user and certs
-# Add non root user and certs
 RUN apk --no-cache add ca-certificates \
     && addgroup -S app && adduser -S -g app app
 # Split instructions so that buildkit can run & cache 
