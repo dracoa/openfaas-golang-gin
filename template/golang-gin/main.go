@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"handler/function"
 	"log"
 	"net/http"
 	"os"
@@ -12,8 +13,7 @@ import (
 	"sync/atomic"
 	"syscall"
 	"time"
-        _ "time/tzdata"
-	"handler/function"
+	_ "time/tzdata"
 )
 
 var (
