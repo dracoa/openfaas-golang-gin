@@ -13,7 +13,6 @@ import (
 	"sync/atomic"
 	"syscall"
 	"time"
-	_ "time/tzdata"
 )
 
 var (

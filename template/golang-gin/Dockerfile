@@ -37,8 +37,10 @@ RUN CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.13
 # Add non root user and certs
-RUN apk --no-cache add ca-certificates \
+RUN apk --no-cache add tzdata ca-certificates \
     && addgroup -S app && adduser -S -g app app
+
+RUN cp /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && echo "Asia/Hong_Kong" >  /etc/timezone
 # Split instructions so that buildkit can run & cache 
 # the previous command ahead of time.
 RUN mkdir -p /home/app \

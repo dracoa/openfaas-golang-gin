@@ -2,7 +2,6 @@ package function
 
 import (
 	"github.com/gin-gonic/gin"
-	_ "time/tzdata"
 )
 
 func Handle(r *gin.Engine) {
