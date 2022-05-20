@@ -2,7 +2,7 @@ module handler
 
 go 1.16
 
-replace handler/function => ./
+replace handler/function => ./function
 
 require (
 	github.com/gin-gonic/gin v1.7.7
