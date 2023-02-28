@@ -33,6 +33,7 @@ RUN go mod tidy
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go test ./... -cover
 
 WORKDIR /go/src/handler
+RUN go work use .
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w" -o handler .
 CMD ["sleep","infinity"]
 
