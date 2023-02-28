@@ -6,7 +6,7 @@ ARG BUILDPLATFORM
 ARG TARGETOS
 ARG TARGETARCH
 
-RUN apk --no-cache add git tzdata
+RUN apk --no-cache add git
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
@@ -41,6 +41,8 @@ FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.17.2 as ship
 # Add non root user and certs
 RUN apk --no-cache add ca-certificates \
     && addgroup -S app && adduser -S -g app app
+
+RUN apk --no-cache add tzdata
 
 RUN cp /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime && echo "Asia/Hong_Kong" >  /etc/timezone
 # Split instructions so that buildkit can run & cache
