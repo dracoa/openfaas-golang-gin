@@ -29,11 +29,11 @@ WORKDIR /go/src/handler/function
 RUN mkdir -p /go/src/handler/function/static
 
 
-# RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go test ./... -cover
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go test ./... -cover
 
 WORKDIR /go/src/handler
 
-# RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w" -o handler .
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w" -o handler .
 CMD ["sleep","infinity"]
 
 
