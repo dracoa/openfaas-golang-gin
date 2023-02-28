@@ -22,19 +22,18 @@ ARG GOFLAGS=""
 ARG CGO_ENABLED=0
 ENV CGO_ENABLED=${CGO_ENABLED}
 
-RUN go mod tidy
 # Run a gofmt and exclude all vendored code.
 RUN test -z "$(gofmt -l $(find . -type f -name '*.go' -not -path "./vendor/*" -not -path "./function/vendor/*"))" || { echo "Run \"gofmt -s -w\" on your Golang code"; exit 1; }
 
 WORKDIR /go/src/handler/function
 RUN mkdir -p /go/src/handler/function/static
 
-RUN go mod tidy
+
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go test ./... -cover
 
 WORKDIR /go/src/handler
-#RUN go work use .
-#RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w" -o handler .
+
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build --ldflags "-s -w" -o handler .
 CMD ["sleep","infinity"]
 
 
