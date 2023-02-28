@@ -1,4 +1,4 @@
-module faas-ethas-log-sync
+module handler
 
 go 1.18
 
